@@ -94,8 +94,11 @@
   }
   
   /* --Header-- */
-  
-  .header {
+/* --Header-- */
+
+/* --Header-- */
+
+.header {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -104,7 +107,7 @@
 	background-color: var(--main-color);
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
 	z-index: 10;
   }
   
@@ -117,16 +120,24 @@
   
   .header__logo-container {
 	flex: 0 0 auto;
+	display: flex;
+	align-items: center;
   }
   
   .header__logo {
 	width: 50px;
 	height: auto;
 	display: block;
-	margin: 0;
+	margin-right: 1rem;
 	cursor: pointer;
 	transition: transform 0.3s ease;
   }
+  
+  /* Adjust the position of the h2 element */
+  .home__title {
+	margin-left: 1rem; /* Add margin to create spacing between the logo and the h2 element */
+  }
+  
   
   .header__logo:hover {
 	transform: scale(1.1);
