@@ -24,7 +24,7 @@ const Header = () => {
   return (
     <header className={`header ${menuOpen ? 'menu-open' : ''}`}>
       <img
-        src="https://i.ibb.co/17kg1nz/Modern-Creative-Technology-Logo-1-removebg-preview.png"
+        src="https://i.ibb.co/1M5wW8D/Logo-removebg-preview.png"
         alt="header__logo"
         className="header__logo"
       />
