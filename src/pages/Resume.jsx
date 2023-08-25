@@ -7,45 +7,45 @@ const WorkExperience = () => {
         <div className="work">
           <h2>Work Experience</h2>
           <p>
-            Lorem ipsum dolor sit amet, ea doming until epicuri iudicabit nam, te usu virtute placerat. Purto brute disputando cu est.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, ea doming until epicuri iudicabit nam, te usu virtute placerat. Purto brute disputando cu est.
+          In my software-focused work experience, I have ve demonstrated innovation and a keen adherence to deadlines. As a Software Developer, I have  engaged with designing and developing user-centered digital/print marketing assets, overseeing the entire process from inception to polished final products.
           </p>
         </div>
         <div className="exp">
           <div>
-            <h3>Lead Web Designer</h3>
-            <h5>ABC Company, Saskatoon / <p>June 2011 - Present</p></h5>
+            <h3>Junior Software Developer</h3>
+            <h5>Younglings Africa, Cape Town, Western Cape, RSA  
+              <br></br> <p> 2023 - Present</p></h5>
             <div className="pbox">
-              <p>3 Years</p>
+              <p>18 Months</p>
             </div>
             <hr />
-            <p>
-              Lorem ipsum dolor sit amet, ea doming until epicuri iudicabit nam, te usu virtute placerat. Purto brute disputando cu est, ea doming until epicuri iudicabit nam.
-            </p>
           </div>
           <div>
-            <h3>Junior Designer</h3>
-            <h5>XYZ Company, Lethbridge / <p>June 2008 - May 2009</p></h5>
+            <h3>System Development Learnership</h3>
+            <h5>CapaCiTi, Salt River, Cape Town, Western Cape, RSA <br></br>
+             <p>Jan 2023 - July 2023</p></h5>
             <div className="pbox">
-              <p>3 Years</p>
+              <p>5 Months</p>
             </div>
             <hr />
-            <p>
-              Lorem ipsum dolor sit amet, ea doming until epicuri iudicabit nam, te usu virtute placerat. Purto brute disputando cu est, ea doming until epicuri iudicabit nam.
-            </p>
           </div>
           <div>
-            <h3>Web Developer</h3>
-            <h5>The Company, Lethbridge / <p>June 2007 - May 2008</p></h5>
+            <h3>End User Computing Learnership</h3>
+            <h5>Multichoice, Bellville, Western Cape, RSA  <br></br>
+             <p>June 2007 - May 2008</p></h5>
             <div className="pbox">
-              <p>3 Years</p>
+              <p>12 Months</p>
             </div>
             <hr />
-            <p className="margin0">
-              Lorem ipsum dolor sit amet, ea doming until epicuri iudicabit nam, te usu virtute placerat. Purto brute disputando cu est, ea doming until epicuri iudicabit nam.
-            </p>
+          </div>
+          <div>
+            <h3>IT TECHNICIAN INTERN</h3>
+            <h5>Masibambane Senior Secondary School, Kraaifontein ,Western Cape, RSA<br></br>
+             <p>Jan 2023 - July 2023</p></h5>
+            <div className="pbox">
+              <p>12 Months</p>
+            </div>
+            <hr />
           </div>
         </div>
       </div>
