@@ -213,7 +213,7 @@
   /* --Home-- */
   
   .home{
-    position: absolute;
+  
     /* top: 150px; */
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -232,24 +232,16 @@
 
 
 
-.video{
-    width: 100%;
-    height: 100vh;
-}
-video{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
 
   
   .home__content {
 	padding: 0 4rem 0 0;
-	color: #e5e5e5;
+	color: var(--main-color);
   }
   
   .home__title {
 	font-size: 3.2rem;
+	color: #070707;
   }
   
   .home__title span {
@@ -269,6 +261,7 @@ video{
   .home__description {
 	font-size: 1.6rem;
 	line-height: 1.25;
+	
   }
   
   .home__social {}
@@ -391,7 +384,60 @@ video{
 	margin: 0.5rem 0 3rem;
   }
 
-
+/*Work Experience*/
+.work-exp {
+    overflow: auto;
+    padding: 50px;
+}
+.work-exp .work {
+    float: left;
+    width: 50%;
+}
+.work-exp .exp {
+    float: left;
+    width: 45%;
+}
+.work-exp .work h2 {
+    color: #555;
+    margin: 5px 0 25px 50px;
+}
+.work-exp .work p {
+    margin: 0 0 10px 50px;
+    line-height: 1.4;
+    color: #999;
+    font-size: 15px;
+    width: 85%
+}
+.work-exp .exp {float: left;margin:38px 0 0 30px}
+.work-exp .exp h3 {color:#666;margin-bottom:0;}
+.work-exp .exp h5 {color:#888;margin-bottom:0;margin-top:10px;}
+.work-exp .exp h5 p {
+    display: inline;
+    line-height: 1.4;
+    color: #999;
+    font-size: 13px;
+    width: 85%
+}
+.work-exp .exp .pbox {
+    width: 60px;
+    height: 25px;
+    background-color:#30C873;
+    margin-bottom: 20px;
+}
+.work-exp .exp .pbox p {
+    text-align: center;
+    color: #fff;
+    line-height: 25px;
+}
+.work-exp .exp div p {
+    font-size: 13px;
+    line-height: 1.4;
+    color: #999;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.work-exp .exp .margin0 {margin-bottom:0}
+/*Work Experience*/
   
   /* --Services-- */
   

@@ -1,15 +1,24 @@
-import { useState } from 'react';
+import  { useState } from 'react';
+ 
+
+const Home = () => <div id="home">Home Content</div>;
+const About = () => <div id="about">About Content</div>;
+const Services = () => <div id="services">Services Content</div>;
+const Projects = () => <div id="portfolio">Projects Content</div>;
+const Testimonials = () => <div id="testimonials">Testimonials Content</div>;
+const Contact = () => <div id="contact">Contact Content</div>;
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   const handleMenuToggle = () => {
     setMenuOpen(!menuOpen);
   };
 
-  const handleMenuClick = (event) => {
+  const handleMenuClick = (event, section) => {
     event.preventDefault();
-    const target = event.target.getAttribute('data-goto');
+    const target = section;
     const targetElement = document.getElementById(target);
 
     if (targetElement) {
@@ -17,58 +26,58 @@ const Header = () => {
         top: targetElement.offsetTop,
         behavior: 'smooth',
       });
-      setMenuOpen(false); // Close the menu after clicking a link
+      setMenuOpen(false);
+      setActiveSection(section);
     }
   };
 
-  return (
-    <header className={`header ${menuOpen ? 'menu-open' : ''}`}>
-      <img
-        src="https://i.ibb.co/1M5wW8D/Logo-removebg-preview.png"
-        alt="header__logo"
-        className="header__logo"
-      />
+  const sections = [
+    { id: 'home', label: 'Home' },
+    { id: 'about', label: 'About' },
+    { id: 'services', label: 'Services' },
+    { id: 'portfolio', label: 'Projects' },
+    { id: 'testimonials', label: 'Testimonials' },
+    { id: 'contact', label: 'Contact' },
+  ];
 
-      <div className={`header__menu menu ${menuOpen ? 'open' : ''}`}>
-        <div className="menu__icon" onClick={handleMenuToggle}>
-          <span></span>
+  return (
+    <div>
+      <header className={`header ${menuOpen ? 'menu-open' : ''}`}>
+        <img
+          src="https://i.ibb.co/1M5wW8D/Logo-removebg-preview.png"
+          alt="header__logo"
+          className="header__logo"
+        />
+        <div className={`header__menu menu ${menuOpen ? 'open' : ''}`}>
+          <div className="menu__icon" onClick={handleMenuToggle}>
+            <span></span>
+          </div>
+          <nav className="menu__body">
+            <ul className="menu__list">
+              {sections.map((section) => (
+                <li key={section.id}>
+                  <a
+                    href={`#${section.id}`}
+                    onClick={(event) => handleMenuClick(event, section.id)}
+                    className={`menu__link ${activeSection === section.id ? 'active' : ''}`}
+                  >
+                    {section.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
-        <nav className="menu__body">
-          <ul className="menu__list">
-            <li>
-              <a href="#" data-goto="home" onClick={handleMenuClick} className="menu__link">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="#" data-goto="about" onClick={handleMenuClick} className="menu__link">
-                About
-              </a>
-            </li>
-            <li>
-              <a href="#" data-goto="services" onClick={handleMenuClick} className="menu__link">
-                Services
-              </a>
-            </li>
-            <li>
-              <a href="#" data-goto="portfolio" onClick={handleMenuClick} className="menu__link">
-                Projects
-              </a>
-            </li>
-            <li>
-              <a href="#" data-goto="testimonials" onClick={handleMenuClick} className="menu__link">
-                Testimonials
-              </a>
-            </li>
-            <li>
-              <a href="#" data-goto="contact" onClick={handleMenuClick} className="menu__link">
-                Contact
-              </a>
-            </li>
-          </ul>
-        </nav>
+      </header>
+      <div className="content">
+        {activeSection === 'home' && <Home />}
+        {activeSection === 'about' && <About />}
+        {activeSection === 'services' && <Services />}
+        {activeSection === 'portfolio' && <Projects />}
+        {activeSection === 'testimonials' && <Testimonials />}
+        {activeSection === 'contact' && <Contact />}
       </div>
-    </header>
+    </div>
   );
 };
 

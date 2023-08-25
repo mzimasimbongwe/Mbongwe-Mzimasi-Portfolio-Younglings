@@ -21,10 +21,6 @@ const Home = () => {
 
   return (
     <div>
-      <div className="video">
-        <video src={Video} autoPlay muted loop />
-      </div>
-
       <section className="page-section home" id="home">
         <div className="home__content rain">
           <div className="home__content">

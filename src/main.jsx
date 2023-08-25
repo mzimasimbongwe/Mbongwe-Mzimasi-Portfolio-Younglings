@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import Header from './components/Header';
 import Home from './pages/Home';
 import About from './pages/About';
+import Resume from './pages/Resume';
 import Project from './pages/Project';
 import Services from './pages/Services'
 import Testimonials from './pages/Testimonials';
@@ -15,10 +16,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Header/>
     <Home/>
     <About/>
+    <Resume/>
     <Services/>
     <Project/>
     <Testimonials/>
     <Contact/>
 
-  </React.StrictMode>,
+  </React.StrictMode>
 )
