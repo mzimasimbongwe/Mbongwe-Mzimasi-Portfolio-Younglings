@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import Typed from 'typed.js';
-import Video from './Video.mp4';
 import { FaGithub, FaLinkedin, FaFacebook, FaInstagram } from 'react-icons/fa6';
 
 const Home = () => {
@@ -53,7 +52,7 @@ const Home = () => {
           </div>
         </div>
         <div className="home__image">
-          <img src="https://i.ibb.co/1M5wW8D/Logo-removebg-preview.png" alt="home-image" />
+          <img src="https://i.ibb.co/9vK3JWb/scott.png"  alt="home-image" />
         </div>
       </section>
     </div>
