@@ -29,41 +29,74 @@ const ContactSection = () => {
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
 
+  const [errors, setErrors] = useState({
+    fullName: '',
+    email: '',
+    mobileNumber: '',
+    subject: '',
+    message: ''
+  });
 
-    // Event handler for form submission
+  const validateMobileNumber = (num) => {
+    return /^\d{10}$/.test(num);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
 
-  
+    const newErrors = {};
+
+    if (!fullName) {
+      newErrors.fullName = 'Full Name is required.';
+    }
+
+    if (!email) {
+      newErrors.email = 'Email is required.';
+    }
+
+    if (!validateMobileNumber(mobileNumber)) {
+      newErrors.mobileNumber = 'Mobile number must have exactly 10 digits.';
+    }
+
+    if (!subject) {
+      newErrors.subject = 'Subject is required.';
+    }
+
+    if (!message) {
+      newErrors.message = 'Message is required.';
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    setErrors({}); // Clear any previous errors
+
     try {
-
-      await addDoc(collection(db, 'Messages'), { 
+      await addDoc(collection(db, 'Messages'), {
+        senderName: fullName, // Store the sender's name as a field
         fullName,
         email,
         mobileNumber,
         subject,
         message
-      })
+      });
 
-      
-     
       // Clear the form fields after successful submission
       setFullName('');
       setEmail('');
       setMobileNumber('');
       setSubject('');
       setMessage('');
-    
-      // Optionally, you can show a success message or redirect the user
-      console.log("Form data sent to Firebase!");
+
+      console.log('Form data sent to Firebase!');
     } catch (error) {
-      // Handle errors here (e.g., show an error message)
-      console.error("Error sending form data to Firebase:", error);
+      console.error('Error sending form data to Firebase:', error);
     }
-    
   };
 
+ 
   return (
     <section className="page-section contact" id="contact">
       <h2 className="page-section__title contact__title">
@@ -74,46 +107,50 @@ const ContactSection = () => {
           <input
             type="text"
             placeholder="Full Name"
-            id="name"
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
-
           />
+          <span className="error-message">{errors.fullName}</span>
+        </div>
+        <div className="form-contact__item">
           <input
             type="email"
             placeholder="Email Address"
-            id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-         
           />
+          <span className="error-message">{errors.email}</span>
         </div>
         <div className="form-contact__item">
           <input
             type="tel"
             placeholder="Mobile Number"
-            id="mobile"
             value={mobileNumber}
             onChange={(e) => setMobileNumber(e.target.value)}
           />
+          <span className="error-message">{errors.mobileNumber}</span>
+        </div>
+        <div className="form-contact__item">
           <input
             type="text"
             placeholder="Email Subject"
-            id="subject"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
           />
+          <span className="error-message">{errors.subject}</span>
         </div>
-        <textarea
-          name=""
-          id="message"
-          cols="30"
-          rows="10"
-          className="form-contact__textarea"
-          placeholder="Your message"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-        ></textarea>
+        <div className="form-contact__item">
+          <textarea
+            name=""
+            cols="30"
+            rows="10"
+            className="form-contact__textarea"
+            placeholder="Your message"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          ></textarea>
+          <span className="error-message">{errors.message}</span>
+        </div>
         <button type="submit" className="btn">
           Send Message
         </button>
