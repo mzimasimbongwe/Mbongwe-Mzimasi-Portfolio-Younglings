@@ -1,4 +1,5 @@
 import  { useState, useEffect } from 'react';
+import '../styles/Testimonials.css';
 const Testimonial = () => {
     const testimonials = [
         { id: 1, name: "Prof Seraphin Desire Eyono Obono", role: "Lecturing, Research, Students Supervision, Students Mentorship", designation: "Mzimasi was my Advanced Diploma student in Information Technology with a specialization in Applications Development. He is passionate about coding and web development. Mzimasi is a hard worker, and I can also see him as a leader, based on how he was working with the other students in class. He is a young man whose performance can easily be optimized if he is placed in a suitable environment with enough resources.", package: "", image: "https://i.ibb.co/S0LyqWC/Whats-App-Image-2023-08-16-at-16-03-21-removebg-preview.png" },

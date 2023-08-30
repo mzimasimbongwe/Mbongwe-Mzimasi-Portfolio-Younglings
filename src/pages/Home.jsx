@@ -1,8 +1,11 @@
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Typed from 'typed.js';
-import { FaGithub, FaLinkedin, FaFacebook, FaInstagram } from 'react-icons/fa6';
+import { FaGithub, FaLinkedin, FaFacebook, FaInstagram } from 'react-icons/fa';
+import '../styles/Home.css';
 
 const Home = () => {
+  const [darkMode, setDarkMode] = useState(false); // State for dark mode
+
   useEffect(() => {
     const typed = new Typed('.multiple-text', {
       strings: ['Web-developer', 'Frontend Developer', 'Backend Developer'],
@@ -12,15 +15,26 @@ const Home = () => {
       loop: true,
     });
 
-    // Cleanup the Typed instance when the component is unmounted
     return () => {
       typed.destroy();
     };
   }, []);
 
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }, [darkMode]);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
   return (
     <div>
-      <section className="page-section home" id="home">
+      <section className={`page-section home ${darkMode ? 'dark-mode' : ''}`} id="home">
         <div className="home__content rain">
           <div className="home__content">
             <h2 className="home__title">Hello, I am Mzimasi Mbongwe</h2>
@@ -34,6 +48,7 @@ const Home = () => {
                 web development and UI design.
               </p>
             </div>
+            <br />
             <div className="home__social social-media">
               <a href="https://github.com/mzimasimbongwe" className="social-media__link animated">
                 <FaGithub className="icon" />
@@ -48,13 +63,17 @@ const Home = () => {
                 <FaInstagram className="icon" />
               </a>
             </div>
+            <br />
             <a href="mbongwe cv (3).pdf" className="btn">Download CV</a>
           </div>
         </div>
         <div className="home__image">
-          <img src="https://i.ibb.co/9vK3JWb/scott.png"  alt="home-image" />
+          <img src="https://i.ibb.co/JqYrXw1/Whats-App-Image-2023-08-23-at-08-36-02-removebg-preview.png" alt="home-image" />
         </div>
       </section>
+      <button onClick={toggleDarkMode} className={`dark-mode-toggle ${darkMode ? 'active' : ''}`}>
+        {darkMode ? 'Light Mode' : 'Dark Mode'}
+      </button>
     </div>
   );
 };

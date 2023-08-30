@@ -1,4 +1,4 @@
-
+import '../styles/Projects.css';
 const PortfolioSection = () => {
     return (
         <section className="page-section portfolio" id="portfolio">

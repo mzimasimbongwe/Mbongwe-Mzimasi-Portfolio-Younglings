@@ -1,4 +1,4 @@
-
+import '../styles/Services.css';
 const ServicesSection = () => {
     return (
         <section className="page-section services" id="services">

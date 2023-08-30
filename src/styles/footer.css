@@ -1,0 +1,49 @@
+ /* --Footer-- */
+  
+ .footer {
+	background-color: var(--main-color); /* Set the same color as the main color */
+	padding: 2rem 9%;
+	color: var(--second-bg-color);
+	text-align: center;
+  }
+  
+  .footer__logo {
+	font-size: 2.5rem;
+	color: var(--second-bg-color);
+	font-weight: 600;
+	cursor: pointer;
+	transition: color 0.3s ease;
+  }
+  
+  .footer__logo:hover {
+	color: var(--text-color);
+  }
+  
+  .footer__social {}
+  
+  .footer__social-link {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	width: 4rem;
+	height: 4rem;
+	background-color: transparent;
+	border: 0.2rem solid var(--second-bg-color);
+	border-radius: 50%;
+	font-size: 2rem;
+	color: var(--second-bg-color);
+	margin: 0 1.5rem;
+	transition: all 0.5s ease;
+  }
+  
+  .footer__social-link:hover {
+	background-color: var(--second-bg-color);
+	color: var(--text-color);
+	box-shadow: var(--box-shadow);
+  }
+  
+  .footer__text {
+	font-size: 1.6rem;
+	color: var(--second-bg-color);
+	margin-top: 3rem;
+  }

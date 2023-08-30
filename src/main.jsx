@@ -10,6 +10,7 @@ import Project from './pages/Project';
 import Services from './pages/Services'
 import Testimonials from './pages/Testimonials';
 import Contact from './pages/Contact';
+import Footer from './pages/Footer';
 import './App.css';
 
 
@@ -25,6 +26,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Project/>
     <Testimonials/>
     <Contact/>
+    <Footer/>
 
   </React.StrictMode>
 )

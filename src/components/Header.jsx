@@ -1,84 +1,59 @@
-import  { useState } from 'react';
- 
+import React, { useState } from "react";
+import "../styles/Navbar.css";
 
-const Home = () => <div id="home">Home Content</div>;
-const About = () => <div id="about">About Content</div>;
-const Services = () => <div id="services">Services Content</div>;
-const Projects = () => <div id="portfolio">Projects Content</div>;
-const Testimonials = () => <div id="testimonials">Testimonials Content</div>;
-const Contact = () => <div id="contact">Contact Content</div>;
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
-const Header = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
-
-  const handleMenuToggle = () => {
-    setMenuOpen(!menuOpen);
-  };
-
-  const handleMenuClick = (event, section) => {
-    event.preventDefault();
-    const target = section;
-    const targetElement = document.getElementById(target);
+  const handleNavItemClick = (sectionId) => {
+    const targetElement = document.getElementById(sectionId);
 
     if (targetElement) {
       window.scrollTo({
         top: targetElement.offsetTop,
-        behavior: 'smooth',
+        behavior: "smooth",
       });
-      setMenuOpen(false);
-      setActiveSection(section);
+      setIsOpen(false);
     }
   };
 
-  const sections = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'services', label: 'Services' },
-    { id: 'portfolio', label: 'Projects' },
-    { id: 'testimonials', label: 'Testimonials' },
-    { id: 'contact', label: 'Contact' },
-  ];
-
   return (
-    <div>
-      <header className={`header ${menuOpen ? 'menu-open' : ''}`}>
+    <div className="Navbar">
+      <div className="nav-logo-container">
         <img
           src="https://i.ibb.co/1M5wW8D/Logo-removebg-preview.png"
           alt="header__logo"
           className="header__logo"
         />
-        <div className={`header__menu menu ${menuOpen ? 'open' : ''}`}>
-          <div className="menu__icon" onClick={handleMenuToggle}>
-            <span></span>
-          </div>
-          <nav className="menu__body">
-            <ul className="menu__list">
-              {sections.map((section) => (
-                <li key={section.id}>
-                  <a
-                    href={`#${section.id}`}
-                    onClick={(event) => handleMenuClick(event, section.id)}
-                    className={`menu__link ${activeSection === section.id ? 'active' : ''}`}
-                  >
-                    {section.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
-      </header>
-      <div className="content">
-        {activeSection === 'home' && <Home />}
-        {activeSection === 'about' && <About />}
-        {activeSection === 'services' && <Services />}
-        {activeSection === 'portfolio' && <Projects />}
-        {activeSection === 'testimonials' && <Testimonials />}
-        {activeSection === 'contact' && <Contact />}
+        <span className="nav-logo"></span>
+      </div>
+      <div className={`nav-items ${isOpen && "open"}`}>
+        <a href="#home" onClick={() => handleNavItemClick("home")}>
+          Home
+        </a>
+        <a href="#about" onClick={() => handleNavItemClick("about")}>
+          About
+        </a>
+        <a href="#services" onClick={() => handleNavItemClick("services")}>
+          Services
+        </a>
+        <a href="#portfolio" onClick={() => handleNavItemClick("portfolio")}>
+          Projects
+        </a>
+        <a href="#testimonials" onClick={() => handleNavItemClick("testimonials")}>
+          Testimonials
+        </a>
+        <a href="#contact" onClick={() => handleNavItemClick("contact")}>
+          Contact
+        </a>
+      </div>
+      <div
+        className={`nav-toggle ${isOpen && "open"}`}
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <div className="bar"></div>
       </div>
     </div>
   );
 };
 
-export default Header;
+export default Navbar;
