@@ -33,6 +33,9 @@ const Navbar = () => {
         <a href="#about" onClick={() => handleNavItemClick("about")}>
           About
         </a>
+        <a href="#resume" onClick={() => handleNavItemClick("resume")}>
+          Skills
+        </a>
         <a href="#services" onClick={() => handleNavItemClick("services")}>
           Services
         </a>

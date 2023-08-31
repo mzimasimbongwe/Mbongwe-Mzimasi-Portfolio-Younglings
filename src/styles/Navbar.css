@@ -55,7 +55,7 @@
       top: 60px;
       left: 0;
       width: 100%;
-      height: calc(35vh - 30px); /* Adjusted height to fit screen */
+      height: calc(45vh - 30px); /* Adjusted height to fit screen */
       background: #3AAFA9; /* Added background color */
       display: flex;
       flex-direction: column;

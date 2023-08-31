@@ -1,6 +1,7 @@
 import '../styles/About.css';
 
 const About = () => {
+  
     return (
       <section className="page-section about" id="about">
         <div className="about__image">

@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import Typed from 'typed.js';
 import { FaGithub, FaLinkedin, FaFacebook, FaInstagram } from 'react-icons/fa';
 import '../styles/Home.css';
+// import '../styles/Mode.css';
 
 const Home = () => {
   const [darkMode, setDarkMode] = useState(false); // State for dark mode
