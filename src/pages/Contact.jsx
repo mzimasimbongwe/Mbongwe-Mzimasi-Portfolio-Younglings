@@ -4,6 +4,7 @@ import {collection, addDoc} from "firebase/firestore/lite";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import {getFirestore} from "firebase/firestore/lite";
+import emailjs from "emailjs-com"
 import '../styles/Contact.css';
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -83,6 +84,24 @@ const ContactSection = () => {
         message
       });
 
+       // Sending the email using EmailJS
+       const templateParams = {
+      senderName: fullName,
+      fullName,
+      email,
+      mobileNumber,
+      subject,
+      message,
+    };
+
+    await emailjs.send(
+      'service_tydkb0q',
+      'template_81gktl9',
+      templateParams,
+      '1PEgFnnoR3-tsdHvg'
+    );
+
+
       // Clear the form fields after successful submission
       setFullName('');
       setEmail('');
@@ -90,7 +109,7 @@ const ContactSection = () => {
       setSubject('');
       setMessage('');
 
-      console.log('Form data sent to Firebase!');
+      console.log('Form data sent to Firebase and email sent with EmailJS!');
     } catch (error) {
       console.error('Error sending form data to Firebase:', error);
     }
@@ -106,6 +125,7 @@ const ContactSection = () => {
         <div className="form-contact__item">
           <input
             type="text"
+            name="fullname"
             placeholder="Full Name"
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
@@ -115,15 +135,18 @@ const ContactSection = () => {
         <div className="form-contact__item">
           <input
             type="email"
+            name="email"
             placeholder="Email Address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            
           />
           <span className="error-message">{errors.email}</span>
         </div>
         <div className="form-contact__item">
           <input
             type="tel"
+            name="number"
             placeholder="Mobile Number"
             value={mobileNumber}
             onChange={(e) => setMobileNumber(e.target.value)}
@@ -133,6 +156,7 @@ const ContactSection = () => {
         <div className="form-contact__item">
           <input
             type="text"
+            name="subject"
             placeholder="Email Subject"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
@@ -141,7 +165,7 @@ const ContactSection = () => {
         </div>
         <div className="form-contact__item">
           <textarea
-            name=""
+            name="message"
             cols="30"
             rows="10"
             className="form-contact__textarea"
