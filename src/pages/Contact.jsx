@@ -125,7 +125,6 @@ const ContactSection = () => {
         <div className="form-contact__item">
           <input
             type="text"
-            name="fullname"
             placeholder="Full Name"
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
@@ -135,7 +134,6 @@ const ContactSection = () => {
         <div className="form-contact__item">
           <input
             type="email"
-            name="email"
             placeholder="Email Address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -146,7 +144,6 @@ const ContactSection = () => {
         <div className="form-contact__item">
           <input
             type="tel"
-            name="number"
             placeholder="Mobile Number"
             value={mobileNumber}
             onChange={(e) => setMobileNumber(e.target.value)}
@@ -156,7 +153,6 @@ const ContactSection = () => {
         <div className="form-contact__item">
           <input
             type="text"
-            name="subject"
             placeholder="Email Subject"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
@@ -165,7 +161,7 @@ const ContactSection = () => {
         </div>
         <div className="form-contact__item">
           <textarea
-            name="message"
+            name=""
             cols="30"
             rows="10"
             className="form-contact__textarea"
