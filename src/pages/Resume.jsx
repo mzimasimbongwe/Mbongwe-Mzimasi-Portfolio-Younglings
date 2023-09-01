@@ -1,7 +1,6 @@
 import  { useState, useEffect } from 'react';
 import '../styles/Skills.css';
 import '../styles/WorkExperience.css';
-import '../styles/Mode.css';
 
 const SkillsAndExperience = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -13,11 +12,13 @@ const SkillsAndExperience = () => {
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
+
   return (
     <div className={`skillsAndExp ${darkMode ? 'dark-mode' : ''}`} id="resume">
-      <button onClick={toggleDarkMode} className={`dark-mode-toggle ${darkMode ? 'active' : ''}`}>
-        {darkMode ? 'Light Mode' : 'Dark Mode'}
-      </button>
+      <label className={`electric-switch ${darkMode ? 'active' : ''}`}>
+        <input type="checkbox" onChange={toggleDarkMode} />
+        <span className="slider"></span>
+      </label>
       <h2 className="page-section__title resume__title">
         Skills And <span>Experience</span>
       </h2>

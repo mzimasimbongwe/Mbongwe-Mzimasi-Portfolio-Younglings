@@ -2,10 +2,9 @@ import  { useState, useEffect } from 'react';
 import Typed from 'typed.js';
 import { FaGithub, FaLinkedin, FaFacebook, FaInstagram } from 'react-icons/fa';
 import '../styles/Home.css';
-// import '../styles/Mode.css';
 
 const Home = () => {
-  const [darkMode, setDarkMode] = useState(false); // State for dark mode
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     const typed = new Typed('.multiple-text', {
@@ -72,9 +71,10 @@ const Home = () => {
           <img src="https://i.ibb.co/JqYrXw1/Whats-App-Image-2023-08-23-at-08-36-02-removebg-preview.png" alt="home-image" />
         </div>
       </section>
-      <button onClick={toggleDarkMode} className={`dark-mode-toggle ${darkMode ? 'active' : ''}`}>
-        {darkMode ? 'Light Mode' : 'Dark Mode'}
-      </button>
+      <label className={`electric-switch ${darkMode ? 'active' : ''}`}>
+        <input type="checkbox" onChange={toggleDarkMode} />
+        <span className="slider"></span>
+      </label>
     </div>
   );
 };
