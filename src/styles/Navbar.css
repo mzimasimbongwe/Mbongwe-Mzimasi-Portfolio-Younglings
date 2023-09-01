@@ -2,7 +2,7 @@
     position: fixed;
     top: 0;
     width: 100%;
-    height: 60px;
+    height: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center; /* Changed to center */
@@ -10,22 +10,31 @@
     z-index: 1000;
   }
   
-  .Navbar > .nav-logo {
-    font-weight: 700;
-    font-size: 21px;
-    margin: 15px;
-    color: #ffffff;
-  }
+
   
-  .Navbar > .nav-items > a {
-    color: #ffffff; /* Changed text color to white */
-    font-size: 16px;
-    text-decoration: none;
-    margin: 15px;
-    position: relative;
-    opacity: 0.9;
+ .Navbar > .nav-items > a {
+  color: #ffffff;
+  font-size: 16px;
+  text-decoration: none;
+  margin: 15px;
+  position: relative;
+  animation: continuousAnimation 3s linear infinite; /* Add a continuous animation */
+  opacity: 1; /* Start with opacity at 1 */
+  transform: translateY(0); /* Start with no translation */
+}
+
+@keyframes continuousAnimation {
+  0% {
+    transform: translateY(0);
   }
-  
+  50% {
+    transform: translateY(-10px); /* Add a slight upward translation halfway through */
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
   .Navbar > .nav-items > a:hover {
     opacity: 1;
   }

@@ -1,8 +1,21 @@
-import React, { useState } from "react";
+import  { useState, useEffect } from "react";
 import "../styles/Navbar.css";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth > 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const handleNavItemClick = (sectionId) => {
     const targetElement = document.getElementById(sectionId);
@@ -22,7 +35,7 @@ const Navbar = () => {
         <img
           src="https://i.ibb.co/1M5wW8D/Logo-removebg-preview.png"
           alt="header__logo"
-          className="header__logo"
+          className={`header__logo ${isDesktop ? 'centered-logo' : ''}`}
         />
         <span className="nav-logo"></span>
       </div>
