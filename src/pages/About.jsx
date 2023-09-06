@@ -1,9 +1,10 @@
+
 import '../styles/About.css';
 
 const About = () => {
-  
-    return (
-      <section className="page-section about" id="about">
+  return (
+    <section className="page-section about" id="about">
+      <div className="about__container">
         <div className="about__image">
           <img src="https://i.ibb.co/nk9kwFn/about-image.png" alt="about-image" />
         </div>
@@ -20,9 +21,9 @@ const About = () => {
             </p>
           </div>
         </div>
-      </section>
-    );
-  };
-  
-  export default About;
-  
+      </div>
+    </section>
+  );
+};
+
+export default About;

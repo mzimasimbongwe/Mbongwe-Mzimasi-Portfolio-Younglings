@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 // Import the functions you need from the SDKs you need
 import {collection, addDoc} from "firebase/firestore/lite";
 import { initializeApp } from "firebase/app";
@@ -33,32 +33,25 @@ const ContactSection = () => {
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
   const [captchaVerified, setCaptchaVerified] = useState(false);
-  const [captchaError, setCaptchaError] = useState('');
+  const [formErrors, setFormErrors] = useState({});
+  const [successMessage, setSuccessMessage] = useState('');
 
   const validateMobileNumber = (num) => {
     return /^\d{10}$/.test(num);
   };
 
-  const onChangeCaptcha = (value) => {
-    if (value) {
-      // reCAPTCHA completed successfully
-      setCaptchaVerified(true);
-      setCaptchaError('');
-    } else {
-      // reCAPTCHA not completed
-      setCaptchaVerified(false);
-      setCaptchaError('Please verify that you are not a robot.');
+  useEffect(() => {
+    if (successMessage) {
+      // Display a success message as an alert
+      alert(successMessage);
+
+      // Clear the success message after displaying the alert
+      setSuccessMessage('');
     }
-  };
+  }, [successMessage]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!captchaVerified) {
-      // Display captcha error message and prevent form submission
-      setCaptchaError('Please verify that you are not a robot.');
-      return;
-    }
 
     const newErrors = {};
 
@@ -82,9 +75,13 @@ const ContactSection = () => {
       newErrors.message = 'Message is required.';
     }
 
+    if (!captchaVerified) {
+      newErrors.captcha = 'Please verify that you are not a robot.';
+    }
+
     if (Object.keys(newErrors).length > 0) {
-      // Display errors if any
-      alert('Please correct the form errors before submitting.');
+      // Set form errors and return to display them next to fields
+      setFormErrors(newErrors);
       return;
     }
 
@@ -95,7 +92,7 @@ const ContactSection = () => {
         email,
         mobileNumber,
         subject,
-        message
+        message,
       });
 
       const templateParams = {
@@ -120,9 +117,8 @@ const ContactSection = () => {
       setSubject('');
       setMessage('');
       setCaptchaVerified(false);
-
-      // Display a success message as an alert
-      alert('Form submitted successfully!');
+      setFormErrors({});
+      setSuccessMessage('Form submitted successfully!');
 
     } catch (error) {
       console.error('Error sending form data to Firebase:', error);
@@ -134,6 +130,7 @@ const ContactSection = () => {
       <h2 className="page-section__title contact__title">
         Contact <span>Me!</span>
       </h2>
+      {successMessage && <div className="success-message">{successMessage}</div>}
       <form className="contact__form form-contact" onSubmit={handleSubmit}>
         <div className="form-contact__item">
           <input
@@ -142,6 +139,9 @@ const ContactSection = () => {
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
           />
+          {formErrors.fullName && (
+            <span className="error-message">{formErrors.fullName}</span>
+          )}
         </div>
         <div className="form-contact__item">
           <input
@@ -150,6 +150,9 @@ const ContactSection = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+          {formErrors.email && (
+            <span className="error-message">{formErrors.email}</span>
+          )}
         </div>
         <div className="form-contact__item">
           <input
@@ -158,6 +161,9 @@ const ContactSection = () => {
             value={mobileNumber}
             onChange={(e) => setMobileNumber(e.target.value)}
           />
+          {formErrors.mobileNumber && (
+            <span className="error-message">{formErrors.mobileNumber}</span>
+          )}
         </div>
         <div className="form-contact__item">
           <input
@@ -166,6 +172,9 @@ const ContactSection = () => {
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
           />
+          {formErrors.subject && (
+            <span className="error-message">{formErrors.subject}</span>
+          )}
         </div>
         <div className="form-contact__item">
           <textarea
@@ -177,12 +186,17 @@ const ContactSection = () => {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
           ></textarea>
+          {formErrors.message && (
+            <span className="error-message">{formErrors.message}</span>
+          )}
         </div>
         <ReCAPTCHA
           sitekey="6LdpAQMoAAAAAPEcLIXSG1QvjHTbFaBdWSJoOCgl"
-          onChange={onChangeCaptcha}
+          onChange={(value) => setCaptchaVerified(!!value)}
         />
-        {captchaError && <span className="error-message">{captchaError}</span>}
+        {formErrors.captcha && (
+          <span className="error-message">{formErrors.captcha}</span>
+        )}
         <button type="submit" className="btn">
           Send Message
         </button>
