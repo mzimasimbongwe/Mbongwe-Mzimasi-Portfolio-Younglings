@@ -4,7 +4,8 @@ import {collection, addDoc} from "firebase/firestore/lite";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import {getFirestore} from "firebase/firestore/lite";
-import emailjs from "emailjs-com"
+import emailjs from "emailjs-com";
+import ReCAPTCHA from "react-google-recaptcha";
 import '../styles/Contact.css';
 
 
@@ -31,21 +32,33 @@ const ContactSection = () => {
   const [mobileNumber, setMobileNumber] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
-
-  const [errors, setErrors] = useState({
-    fullName: '',
-    email: '',
-    mobileNumber: '',
-    subject: '',
-    message: ''
-  });
+  const [captchaVerified, setCaptchaVerified] = useState(false);
+  const [captchaError, setCaptchaError] = useState('');
 
   const validateMobileNumber = (num) => {
     return /^\d{10}$/.test(num);
   };
 
+  const onChangeCaptcha = (value) => {
+    if (value) {
+      // reCAPTCHA completed successfully
+      setCaptchaVerified(true);
+      setCaptchaError('');
+    } else {
+      // reCAPTCHA not completed
+      setCaptchaVerified(false);
+      setCaptchaError('Please verify that you are not a robot.');
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!captchaVerified) {
+      // Display captcha error message and prevent form submission
+      setCaptchaError('Please verify that you are not a robot.');
+      return;
+    }
 
     const newErrors = {};
 
@@ -70,15 +83,14 @@ const ContactSection = () => {
     }
 
     if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
+      // Display errors if any
+      alert('Please correct the form errors before submitting.');
       return;
     }
 
-    setErrors({}); // Clear any previous errors
-
     try {
       await addDoc(collection(db, 'Messages'), {
-        senderName: fullName, // Store the sender's name as a field
+        senderName: fullName,
         fullName,
         email,
         mobileNumber,
@@ -86,38 +98,37 @@ const ContactSection = () => {
         message
       });
 
-       // Sending the email using EmailJS
-       const templateParams = {
-      senderName: fullName,
-      fullName,
-      email,
-      mobileNumber,
-      subject,
-      message,
-    };
+      const templateParams = {
+        senderName: fullName,
+        fullName,
+        email,
+        mobileNumber,
+        subject,
+        message,
+      };
 
-    await emailjs.send(
-      'service_tydkb0q',
-      'template_81gktl9',
-      templateParams,
-      '1PEgFnnoR3-tsdHvg'
-    );
+      await emailjs.send(
+        'service_tydkb0q',
+        'template_81gktl9',
+        templateParams,
+        '1PEgFnnoR3-tsdHvg'
+      );
 
-
-      // Clear the form fields after successful submission
       setFullName('');
       setEmail('');
       setMobileNumber('');
       setSubject('');
       setMessage('');
+      setCaptchaVerified(false);
 
-      console.log('Form data sent to Firebase and email sent with EmailJS!');
+      // Display a success message as an alert
+      alert('Form submitted successfully!');
+
     } catch (error) {
       console.error('Error sending form data to Firebase:', error);
     }
   };
 
- 
   return (
     <section className="page-section contact" id="contact">
       <h2 className="page-section__title contact__title">
@@ -131,7 +142,6 @@ const ContactSection = () => {
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
           />
-          <span className="error-message">{errors.fullName}</span>
         </div>
         <div className="form-contact__item">
           <input
@@ -139,9 +149,7 @@ const ContactSection = () => {
             placeholder="Email Address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            
           />
-          <span className="error-message">{errors.email}</span>
         </div>
         <div className="form-contact__item">
           <input
@@ -150,7 +158,6 @@ const ContactSection = () => {
             value={mobileNumber}
             onChange={(e) => setMobileNumber(e.target.value)}
           />
-          <span className="error-message">{errors.mobileNumber}</span>
         </div>
         <div className="form-contact__item">
           <input
@@ -159,7 +166,6 @@ const ContactSection = () => {
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
           />
-          <span className="error-message">{errors.subject}</span>
         </div>
         <div className="form-contact__item">
           <textarea
@@ -171,8 +177,12 @@ const ContactSection = () => {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
           ></textarea>
-          <span className="error-message">{errors.message}</span>
         </div>
+        <ReCAPTCHA
+          sitekey="6LdpAQMoAAAAAPEcLIXSG1QvjHTbFaBdWSJoOCgl"
+          onChange={onChangeCaptcha}
+        />
+        {captchaError && <span className="error-message">{captchaError}</span>}
         <button type="submit" className="btn">
           Send Message
         </button>
@@ -182,8 +192,3 @@ const ContactSection = () => {
 };
 
 export default ContactSection;
-
-
-
-
-

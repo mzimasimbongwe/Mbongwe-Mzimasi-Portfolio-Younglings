@@ -64,7 +64,7 @@ const Home = () => {
               </a>
             </div>
             <br />
-            <a href="mbongwe cv (3).pdf" className="btn">Download CV</a>
+            <a href="https://drive.google.com/file/d/12Y07jKbPAj779tlY8-yT-3OrfufN04NX/view?usp=sharing" className="btn">Download CV</a>
           </div>
         </div>
         <div className="home__image">

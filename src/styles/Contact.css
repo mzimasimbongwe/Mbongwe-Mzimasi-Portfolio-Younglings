@@ -1,75 +1,99 @@
- 
-  /* --Contact-- */
-  
-  .contact {}
-  
-  .contact__title {
-	margin: 0 0 3rem 0;
-  }
-  
-  .contact__form {
-	margin: 1rem auto 3rem;
-  }
-  
-  .form-contact {
-	max-width: 70rem;
-	text-align: center;
-  }
-  
-  .form-contact__item {
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-  }
-  
-  .form-contact__item input,
-  .form-contact__textarea {
-	width: 100%;
-	padding: 1.5rem;
-	font-size: 1.6rem;
-	color: var(--text-color);
-	background-color: var(--second-bg-color);
-	border-radius: 0.8rem;
-	margin: 0.7rem 0;
-  }
-  
-  .form-contact__item input {
-	width: 49%;
-  }
-  
-  .form-contact__textarea {
-	resize: none;
-	margin: 0.7rem 0;
-  }
-  
-  .form-contact__submit-btn {
-	display: inline-block;
-	padding: 1rem 2.8rem;
-	background-color: var(--main-color);
-	border-radius: 4rem;
-	box-shadow: var(--box-shadow);
-	font-size: 1.6rem;
-	color: var(--second-bg-color);
-	letter-spacing: 0.1rem;
-	font-weight: 600;
-	cursor: pointer;
-  }
-  
-  .form-contact__submit-btn:hover {
-	box-shadow: none;
-  }
-  
-  .contact__info {
-	text-align: center;
-	margin-bottom: 4rem;
-  }
-  
-  .contact__info-item {
-	font-size: 1.6rem;
-	margin-bottom: 1.5rem;
-  }
-  
-  .contact__info-item i {
-	margin-right: 1rem;
-  }
-  
+/* --Contact-- */
+
+.contact {
+    max-width: 100%; /* Set a maximum width for the entire contact section */
+    margin: 0 auto; /* Center the contact section horizontally */
+    padding: 0 20px; /* Add padding to create space between the content and the border */
+    box-sizing: border-box; /* Include padding in the width calculation */
+}
+
+.contact__title {
+    margin: 0 0 3rem 0;
+}
+
+.contact__form {
+    margin: 1rem auto 3rem;
+    padding: 20px; /* Add padding to create space between the content and the border */
+    border-radius: 5px; /* Add border radius for rounded corners */
+    border: 2px solid #000; /* You can customize the border color */
+}
+
+/* Add this CSS to your styles */
+.error-message {
+  height: 1.5rem; /* Adjust the height as needed */
+  display: block;
+  font-size: 1.2rem; /* Adjust the font size as needed */
+  color: red; /* Customize the color of the error message */
+  margin-top: 4px; /* Add some space between the input and the error message */
+}
+
+
+/* Add media query for smaller screens */
+@media (max-width: 768px) {
+    .contact__form {
+        padding: 10px; /* Adjust padding for smaller screens */
+        border-width: 1px; /* Adjust border width for smaller screens */
+    }
+}
+
+.form-contact {
+    max-width: 100%; /* Set a maximum width for the contact form container */
+    text-align: center;
+}
+
+.form-contact__item {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.form-contact__item input,
+.form-contact__textarea {
+    width: 100%;
+    padding: 1.5rem;
+    font-size: 1.6rem;
+    color: var(--text-color);
+    background-color: var(--second-bg-color);
+    border-radius: 0.8rem;
+    margin: 0.7rem 0;
+}
+
+.form-contact__item input {
+    width: 49%;
+}
+
+.form-contact__textarea {
+    resize: none;
+    margin: 0.7rem 0;
+}
+
+.form-contact__submit-btn {
+    display: inline-block;
+    padding: 1rem 2.8rem;
+    background-color: var(--main-color);
+    border-radius: 4rem;
+    box-shadow: var(--box-shadow);
+    font-size: 1.6rem;
+    color: var(--second-bg-color);
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.form-contact__submit-btn:hover {
+    box-shadow: none;
+}
+
+.contact__info {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.contact__info-item {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+}
+
+.contact__info-item i {
+    margin-right: 1rem;
+}
