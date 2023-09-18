@@ -1,6 +1,5 @@
 {
   "hosting": {
-    "site": "mzimasimbongwe",
     "public": "dist",
     "ignore": [
       "firebase.json",

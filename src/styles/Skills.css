@@ -43,11 +43,12 @@
     text-align: right;
     color: #fff;
     padding-right: 10px;
-    border-right: 2px solid #fff;
+    border-right: 2px solid #0f0f0f; /* Change the border color to red */
     animation: animate 0.5s linear infinite;
-    background: linear-gradient(45deg, rgba(255, 255, 255, 0.25) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 75%, transparent 75%, transparent);
+    background: linear-gradient(45deg, rgba(10, 10, 10, 0.25) 25%, transparent 25%, transparent 50%, rgba(10, 10, 10, 0.25) 50%, rgba(17, 17, 17, 0.25) 75%, transparent 75%, transparent); /* Change the gradient color to red */
     background-size: 30px 30px;
 }
+
 
 @keyframes animate {
     0% {

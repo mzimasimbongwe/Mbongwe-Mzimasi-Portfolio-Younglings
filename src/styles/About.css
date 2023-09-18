@@ -6,17 +6,87 @@
     align-items: center;
     background-color: var(--second-bg-color);
 }
-
-.about__image img {
-    width: 35vw;
+.about__container {
+  display: flex;
+  flex-direction: row-reverse; /* Align items horizontally */
 }
+
+.about__content {
+  flex: 2;
+  padding: 20px;
+  /* background-color: #f2f2f2; */
+}
+
+.about__image {
+  flex: 1;
+  display: flex;
+  align-items: flex-start; /* Align the image to the start (top) */
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* --About-- */
+.about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--second-bg-color);
+}
+
+.about__container {
+  display: flex;
+  flex-direction: column; /* Change to column to stack items vertically on small screens */
+  align-items: center; /* Center items horizontally */
+  text-align: center; /* Center text within the container */
+  padding: 20px;
+}
+
+.about__content {
+  max-width: 800px; /* Set a maximum width for the text content */
+  padding: 20px;
+  text-align: center; /* Center text within the container */
+}
+
+.about__image {
+  max-width: 100%; /* Make sure the image is responsive */
+}
+
+@media (min-width: 768px) {
+  .about__container {
+      flex-direction: row; /* Revert to row layout for larger screens */
+      align-items: flex-start; /* Align items to the top */
+      text-align: left; /* Align text to the left */
+  }
+  
+  .about__content {
+      flex: 2;
+      padding: 20px;
+      text-align: left; /* Align text to the left */
+  }
+
+  .about__image {
+      flex: 1;
+      max-width: none; /* Reset max-width for the image */
+  }
+}
+
+
 
 .about__content {
     display: flex;
     flex-direction: column; /* Change to column to stack items vertically */
     align-items: flex-start; /* Align items to the left */
     padding: 0 4rem;
-    text-align: right; /* Align text within the container to the right */
+    text-align: left; /* Align text within the container to the right */
 }
 
 .about__title {

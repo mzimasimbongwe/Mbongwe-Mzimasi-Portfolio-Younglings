@@ -3,9 +3,11 @@
 	--second-bg-color: #e5e5e5;
 	--text-color: #333333;
 	--main-color: #3AAFA9;
-	--main-color-dark: rgba(66, 133, 244, 0.5);
+	--main-color-dark: #1E7F74; /* Increased saturation */
 	--box-shadow: 0 0 1rem var(--main-color);
   }
+  
+  
 
 
    

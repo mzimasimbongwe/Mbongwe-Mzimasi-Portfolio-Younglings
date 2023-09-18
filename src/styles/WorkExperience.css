@@ -8,7 +8,7 @@
     float: left;
     width: 100%; /* Full width on small screens */
     max-width: 100%; /* Added max-width for better responsiveness */
-    color: #555;
+    color:  #3AAFA9;
 }
 
 .work-exp .exp {
@@ -37,7 +37,7 @@
 }
 
 .work-exp .exp h3 {
-    color: #666;
+    color:  #3AAFA9;
     margin-bottom: 0;
     font-size: 24px;
 }
@@ -58,8 +58,8 @@
 }
 
 .work-exp .exp .pbox {
-    width: 60px;
-    height: 25px;
+    width: 80px;
+    height: 35px;
     background-color: #3AAFA9;
     margin-bottom: 20px;
 }

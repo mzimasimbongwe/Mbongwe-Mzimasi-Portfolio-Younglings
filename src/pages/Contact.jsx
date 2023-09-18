@@ -1,16 +1,30 @@
-import { useState, useEffect } from 'react';
-// Import the functions you need from the SDKs you need
-import {collection, addDoc} from "firebase/firestore/lite";
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import {getFirestore} from "firebase/firestore/lite";
-import emailjs from "emailjs-com";
-import ReCAPTCHA from "react-google-recaptcha";
+import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { collection, addDoc } from 'firebase/firestore/lite';
+import { initializeApp } from 'firebase/app';
+import { getAnalytics } from 'firebase/analytics';
+import { getFirestore } from 'firebase/firestore/lite';
+import emailjs from 'emailjs-com';
+import ReCAPTCHA from 'react-google-recaptcha';
 import '../styles/Contact.css';
 
+class ContactForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      email: '',
+      subject: '',
+      message: '',
+      captchaVerified: false,
+      nameError: '',
+      emailError: '',
+      subjectError: '',
+      messageError: '',
+    };
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // Your Firebase configuration
+   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyDHpIVFf_gNoOjlrtbUP1Gv6HyV8HlW4vM",
   authDomain: "hosting-example-4d431.firebaseapp.com",
@@ -21,87 +35,90 @@ const firebaseConfig = {
   appId: "1:279380074239:web:5d989e8354399f887376ca"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const db = getFirestore(app);
 
-const ContactSection = () => {
-  const [fullName, setFullName] = useState('');
-  const [email, setEmail] = useState('');
-  const [mobileNumber, setMobileNumber] = useState('');
-  const [subject, setSubject] = useState('');
-  const [message, setMessage] = useState('');
-  const [captchaVerified, setCaptchaVerified] = useState(false);
-  const [formErrors, setFormErrors] = useState({});
-  const [successMessage, setSuccessMessage] = useState('');
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    this.db = getFirestore(app);
+  }
 
-  const validateMobileNumber = (num) => {
-    return /^\d{10}$/.test(num);
+  validateName = () => {
+    if (this.state.name.trim() === '') {
+      this.setState({ nameError: 'Name is required' });
+      return false;
+    }
+    this.setState({ nameError: '' });
+    return true;
   };
 
-  useEffect(() => {
-    if (successMessage) {
-      // Display a success message as an alert
-      alert(successMessage);
-
-      // Clear the success message after displaying the alert
-      setSuccessMessage('');
+  validateEmail = () => {
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    if (!emailPattern.test(this.state.email)) {
+      this.setState({ emailError: 'Invalid email address' });
+      return false;
     }
-  }, [successMessage]);
+    this.setState({ emailError: '' });
+    return true;
+  };
 
-  const handleSubmit = async (e) => {
+  validateSubject = () => {
+    if (this.state.subject.trim() === '') {
+      this.setState({ subjectError: 'Subject is required' });
+      return false;
+    }
+    this.setState({ subjectError: '' });
+    return true;
+  };
+
+  validateMessage = () => {
+    if (this.state.message.trim() === '') {
+      this.setState({ messageError: 'Message is required' });
+      return false;
+    }
+    this.setState({ messageError: '' });
+    return true;
+  };
+
+  handleInputChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  handleSubmit = async (e) => {
     e.preventDefault();
 
-    const newErrors = {};
+    const isNameValid = this.validateName();
+    const isEmailValid = this.validateEmail();
+    const isSubjectValid = this.validateSubject();
+    const isMessageValid = this.validateMessage();
 
-    if (!fullName) {
-      newErrors.fullName = 'Full Name is required.';
+    if (!this.state.captchaVerified) {
+      alert('Please verify that you are not a robot.');
+      return;
     }
 
-    if (!email) {
-      newErrors.email = 'Email is required.';
-    }
-
-    if (!validateMobileNumber(mobileNumber)) {
-      newErrors.mobileNumber = 'Mobile number must have exactly 10 digits.';
-    }
-
-    if (!subject) {
-      newErrors.subject = 'Subject is required.';
-    }
-
-    if (!message) {
-      newErrors.message = 'Message is required.';
-    }
-
-    if (!captchaVerified) {
-      newErrors.captcha = 'Please verify that you are not a robot.';
-    }
-
-    if (Object.keys(newErrors).length > 0) {
-      // Set form errors and return to display them next to fields
-      setFormErrors(newErrors);
+    if (!(isNameValid && isEmailValid && isSubjectValid && isMessageValid)) {
       return;
     }
 
     try {
-      await addDoc(collection(db, 'Messages'), {
-        senderName: fullName,
-        fullName,
-        email,
-        mobileNumber,
-        subject,
-        message,
+      await addDoc(collection(this.db, 'Messages'), {
+        senderName: this.state.name,
+        fullName: this.state.name,
+        email: this.state.email,
+        mobileNumber: '',
+        subject: this.state.subject,
+        message: this.state.message,
       });
 
       const templateParams = {
-        senderName: fullName,
-        fullName,
-        email,
-        mobileNumber,
-        subject,
-        message,
+        senderName: this.state.name,
+        fullName: this.state.name,
+        email: this.state.email,
+        mobileNumber: '',
+        subject: this.state.subject,
+        message: this.state.message,
       };
 
       await emailjs.send(
@@ -111,98 +128,129 @@ const ContactSection = () => {
         '1PEgFnnoR3-tsdHvg'
       );
 
-      setFullName('');
-      setEmail('');
-      setMobileNumber('');
-      setSubject('');
-      setMessage('');
-      setCaptchaVerified(false);
-      setFormErrors({});
-      setSuccessMessage('Form submitted successfully!');
+      this.setState({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+        captchaVerified: false,
+      });
 
+      alert('Form submitted successfully!');
     } catch (error) {
-      console.error('Error sending form data to Firebase:', error);
+      console.error('Error sending form data:', error);
     }
   };
 
-  return (
-    <section className="page-section contact" id="contact">
-      <h2 className="page-section__title contact__title">
-        Contact <span>Me!</span>
-      </h2>
-      {successMessage && <div className="success-message">{successMessage}</div>}
-      <form className="contact__form form-contact" onSubmit={handleSubmit}>
-        <div className="form-contact__item">
-          <input
-            type="text"
-            placeholder="Full Name"
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
-          />
-          {formErrors.fullName && (
-            <span className="error-message">{formErrors.fullName}</span>
-          )}
-        </div>
-        <div className="form-contact__item">
-          <input
-            type="email"
-            placeholder="Email Address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          {formErrors.email && (
-            <span className="error-message">{formErrors.email}</span>
-          )}
-        </div>
-        <div className="form-contact__item">
-          <input
-            type="tel"
-            placeholder="Mobile Number"
-            value={mobileNumber}
-            onChange={(e) => setMobileNumber(e.target.value)}
-          />
-          {formErrors.mobileNumber && (
-            <span className="error-message">{formErrors.mobileNumber}</span>
-          )}
-        </div>
-        <div className="form-contact__item">
-          <input
-            type="text"
-            placeholder="Email Subject"
-            value={subject}
-            onChange={(e) => setSubject(e.target.value)}
-          />
-          {formErrors.subject && (
-            <span className="error-message">{formErrors.subject}</span>
-          )}
-        </div>
-        <div className="form-contact__item">
-          <textarea
-            name=""
-            cols="30"
-            rows="10"
-            className="form-contact__textarea"
-            placeholder="Your message"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          ></textarea>
-          {formErrors.message && (
-            <span className="error-message">{formErrors.message}</span>
-          )}
-        </div>
-        <ReCAPTCHA
-          sitekey="6LdpAQMoAAAAAPEcLIXSG1QvjHTbFaBdWSJoOCgl"
-          onChange={(value) => setCaptchaVerified(!!value)}
-        />
-        {formErrors.captcha && (
-          <span className="error-message">{formErrors.captcha}</span>
-        )}
-        <button type="submit" className="btn">
-          Send Message
-        </button>
-      </form>
-    </section>
-  );
-};
+  render() {
+    return (
+      <section className="contact" id="contact">
+        <div className="container">
+          <div className="heading text-center">
+            <h2>
+              Contact <span> Me </span>
+            </h2>
+            <br></br> <br></br> <br></br> <br></br> <br></br>
+          </div>
+          <div className="row">
+            <div className="col-md-5">
+              <div className="title">
+                <h3>Get in Touch</h3>
+                </div>
+              <div className="content">
+                <div className="info">
+                  <i className="fas fa-mobile-alt"></i>
+                  <h4 className="d-inline-block">
+                    PHONE :
+                    <br />
+                    <span>0718117814</span>
+                  </h4>
+                </div>
+                <div className="info">
+                  <i className="far fa-envelope"></i>
+                  <h4 className="d-inline-block">
+                    EMAIL :
+                    <br />
+                    <span>mzimasimbongwe98@gmail.com</span>
+                  </h4>
+                </div>
+                <div className="info">
+                  <i className="fas fa-map-marker-alt"></i>
+                  <h4 className="d-inline-block">
+                    ADDRESS :<br />
+                    <span>Cape Town , Western Cape, South Africa</span>
+                  </h4>
+                </div>
+              </div>
+            </div>
 
-export default ContactSection;
+            <div className="col-md-7">
+              <form onSubmit={this.handleSubmit}>
+                <div className="row">
+                  <div className="col-sm-6">
+                    <input
+                      type="text"
+                      className={`form-control ${this.state.nameError && 'is-invalid'}`}
+                      placeholder="Name"
+                      name="name"
+                      value={this.state.name}
+                      onChange={this.handleInputChange}
+                    />
+                    <div className="invalid-feedback">{this.state.nameError}</div>
+                  </div>
+                  <div className="col-sm-6">
+                    <input
+                      type="email"
+                      className={`form-control ${this.state.emailError && 'is-invalid'}`}
+                      placeholder="Email"
+                      name="email"
+                      value={this.state.email}
+                      onChange={this.handleInputChange}
+                    />
+                    <div className="invalid-feedback">{this.state.emailError}</div>
+                  </div>
+                  <div className="col-sm-12">
+                    <input
+                      type="text"
+                      className={`form-control ${this.state.subjectError && 'is-invalid'}`}
+                      placeholder="Subject"
+                      name="subject"
+                      value={this.state.subject}
+                      onChange={this.handleInputChange}
+                    />
+                    <div className="invalid-feedback">{this.state.subjectError}</div>
+                  </div>
+                  <div className="col-sm-12">
+                    <textarea
+                      className={`form-control ${this.state.messageError && 'is-invalid'}`}
+                      rows="5"
+                      id="comment"
+                      placeholder="Message"
+                      name="message"
+                      value={this.state.message}
+                      onChange={this.handleInputChange}
+                    ></textarea>
+                    <div className="invalid-feedback">{this.state.messageError}</div>
+                  </div>
+                  <div className="col-sm-12">
+                    <ReCAPTCHA
+                      sitekey="6LdpAQMoAAAAAPEcLIXSG1QvjHTbFaBdWSJoOCgl"
+                      onChange={(value) => this.setState({ captchaVerified: !!value })}
+                    />
+                  </div>
+                  <div className="col-sm-12">
+                    <button className="btn btn-block" type="submit">
+                      Send Now!
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+}
+
+export default ContactForm;
