@@ -1,0 +1,43 @@
+p {
+    margin: 0;
+    padding: 0;
+}
+
+#clock {
+    font-family: 'Share Tech Mono', monospace;
+    color: #3AAFA9;
+    text-align: center;
+    position: absolute;
+    left: 23%;
+    top: 90%;
+    transform: translate(-50%, -50%);
+    color: #3AAFA9;
+    text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(17, 17, 17, 0);
+}
+
+#clock .time {
+    letter-spacing: 0.05em;
+    font-size: 80px;
+    padding: 5px 0;
+}
+
+#clock .date {
+    letter-spacing: 0.1em;
+    font-size: 24px;
+    color: #888888;
+}
+
+#clock .text {
+    letter-spacing: 0.1em;
+    font-size: 12px;
+    padding: 20px 0 0;
+}
+
+/* Media Query for Small Screens */
+@media screen and (max-width: 768px) {
+    #clock {
+        left: auto;
+        right: 10px; /* Adjust this value as needed */
+        transform: none;
+    }
+}

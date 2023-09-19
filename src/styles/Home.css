@@ -207,7 +207,6 @@ input:checked + .slider:before {
     width: 100%;
     max-width: 400px;
     margin-top: 2rem;
-    animation: floatImage 4s ease-in-out infinite;
   }
   
   @keyframes floatImage {

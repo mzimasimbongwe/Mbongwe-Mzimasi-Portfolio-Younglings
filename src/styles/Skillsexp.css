@@ -1,0 +1,70 @@
+.skillsAndExp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .electric-switch {
+    /* Your switch styles here */
+  }
+  
+  .page-section__title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .skillsAndExperienceContainer {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column by default */
+    gap: 20px; /* Adjust the gap between columns */
+    width: 100%;
+    max-width: 1200px; /* Adjust the maximum width as needed */
+    border: 2px solid #ccc; /* Add a border to the container */
+    border-radius: 10px; /* Rounded corners for the container */
+    padding: 20px; /* Add padding to the container */
+  }
+  
+  .skillsBox {
+    /* Background color for the skills section */
+    padding: 10px; /* Decrease the padding to reduce height */
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    margin-top: -5px; /* Adjust the negative margin to push the skills box up */
+  }
+  
+  .work-exp {
+    /* Background color for the work experience section */
+    padding: 10px; /* Decrease the padding to reduce height */
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .skills {
+    margin-bottom: 10px;
+  }
+  
+  .progress {
+    background-color: #ddd;
+    height: 10px;
+    border-radius: 5px;
+  }
+  
+  .percent {
+    /* Adjust color-related styles for the progress bar here */
+    height: 100%;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 10px;
+    font-size: 12px;
+  }
+  
+  /* Add any additional styles for your content here */
+  
+  /* Responsive Styles */
+  @media (min-width: 768px) {
+    .skillsAndExperienceContainer {
+      grid-template-columns: 1fr 1fr; /* Two columns on larger screens */
+    }
+  }
+  

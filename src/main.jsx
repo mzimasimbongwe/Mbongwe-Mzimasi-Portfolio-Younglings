@@ -18,8 +18,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Home/>
     <About/>
     <Resume/>
-    <Services/>
     <Project/>
+    <Services/>
     <Testimonials/>
     <Contact/>
     <Footer/>

@@ -1,14 +1,15 @@
 /* SkillsBox.css */
 .skillsBox {
     position: relative;
-    max-width: 1000px; /* Increase the max-width to your desired value */
+    max-width: 800px; /* Decreased max-width */
     width: 100%;
-    padding: 100px; /* Increase the padding to your desired value */
-    margin: 100px auto;
+    padding: 50px; /* Decreased padding */
+    margin: 50px auto; /* Decreased margin */
     background: #3AAFA9;
     box-sizing: border-box;
     color: #fff;
 }
+
 
 
 .skillsBox h1 {
@@ -20,8 +21,8 @@
 .skills {
     position: relative;
     width: 100%;
-    margin-bottom: 20px;
-}
+    margin-bottom: 10px; /* Decreased margin to give less space between skills */
+  }
 
 .skills h2 {
     margin: 10px 0 0;
@@ -37,8 +38,13 @@
     border: 2px solid #fff;
     line-height: 22px;
     overflow: hidden;
-}
-
+    margin-bottom: 10px; /* Decreased margin to give space between skills */
+  }
+  
+  
+  
+  
+  
 .progress .percent {
     text-align: right;
     color: #fff;

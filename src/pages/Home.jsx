@@ -2,6 +2,7 @@ import  { useState, useEffect } from 'react';
 import Typed from 'typed.js';
 import { FaGithub, FaLinkedin, FaFacebook, FaInstagram } from 'react-icons/fa';
 import '../styles/Home.css';
+import Clock from '../components/clock';
 
 const Home = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -65,6 +66,7 @@ const Home = () => {
             </div>
             <br />
             <a href="https://drive.google.com/file/d/12Y07jKbPAj779tlY8-yT-3OrfufN04NX/view?usp=sharing" className="btn">Download CV</a>
+            <Clock />
           </div>
         </div>
         <div className="home__image">
