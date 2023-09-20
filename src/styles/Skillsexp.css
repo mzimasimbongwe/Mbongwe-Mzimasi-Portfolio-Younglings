@@ -19,7 +19,7 @@
     grid-template-columns: 1fr; /* Single column by default */
     gap: 20px; /* Adjust the gap between columns */
     width: 100%;
-    max-width: 1200px; /* Adjust the maximum width as needed */
+    max-width: 1000px; /* Adjust the maximum width as needed */
     border: 2px solid #ccc; /* Add a border to the container */
     border-radius: 10px; /* Rounded corners for the container */
     padding: 20px; /* Add padding to the container */

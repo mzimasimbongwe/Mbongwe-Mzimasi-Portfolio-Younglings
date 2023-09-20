@@ -29,6 +29,7 @@
     font-size: 15px;
     width: 100%; /* Full width on small screens */
     color: #999;
+     margin: 0;
 }
 
 .work-exp .exp {

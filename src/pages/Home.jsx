@@ -70,7 +70,7 @@ const Home = () => {
           </div>
         </div>
         <div className="home__image">
-          <img src="https://i.ibb.co/JqYrXw1/Whats-App-Image-2023-08-23-at-08-36-02-removebg-preview.png" alt="home-image" />
+          <img src= "https://i.ibb.co/cN83Ss0/Untitled-design-2-removebg-preview.png"    alt="home-image" />
         </div>
       </section>
       <label className={`electric-switch ${darkMode ? 'active' : ''}`}>

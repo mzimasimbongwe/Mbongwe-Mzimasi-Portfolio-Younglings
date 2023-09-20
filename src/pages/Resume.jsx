@@ -25,80 +25,81 @@ const SkillsAndExperience = () => {
       </h2>
       <div className="skillsAndExperienceContainer">
         <div className="skillsBox">
-        <img src="https://i.ibb.co/rmq8nqQ/profile-1.gif" alt="Skills Image" className="skills-image" />
-          <h1>Skills</h1>
+        <img src="https://i.ibb.co/pvDkK6s/Untitled-design-8.png"   alt="Skills Image" className="skills-image" />
+          <h1>Prgramming Skills</h1>
           <div className="skills">
-            <div className="progress">
-              <div className="percent" style={{ width: '90%' }}>90%</div>
-            </div>
             <h2>Html</h2>
           </div>
           <div className="skills">
             <div className="progress">
-              <div className="percent" style={{ width: '85%' }}>85%</div>
+              <div className="percent" style={{ width: '85%' }}></div>
             </div>
             <h2>Css</h2>
           </div>
           <div className="skills">
             <div className="progress">
-              <div className="percent" style={{ width: '70%' }}>70%</div>
+              <div className="percent" style={{ width: '70%' }}></div>
             </div>
             <h2>Javascript</h2>
           </div>
           <div className="skills">
             <div className="progress">
-              <div className="percent" style={{ width: '80%' }}>80%</div>
+              <div className="percent" style={{ width: '80%' }}></div>
             </div>
             <h2>Java</h2>
           </div>
           <div className="skills">
             <div className="progress">
-              <div className="percent" style={{ width: '70%' }}>70%</div>
+              <div className="percent" style={{ width: '70%' }}></div>
             </div>
             <h2>Node.js</h2>
           </div>
           <div className="skills">
             <div className="progress">
-              <div className="percent" style={{ width: '70%' }}>70%</div>
+              <div className="percent" style={{ width: '70%' }}></div>
             </div>
             <h2>GitHub</h2>
           </div>
           <div className="skills">
             <div className="progress">
-              <div className="percent" style={{ width: '70%' }}>70%</div>
+              <div className="percent" style={{ width: '70%' }}></div>
             </div>
             <h2>Firebase</h2>
           </div>
           <div className="skills">
             <div className="progress">
-              <div className="percent" style={{ width: '70%' }}>70%</div>
+              <div className="percent" style={{ width: '70%' }}></div>
             </div>
             <h2>SQL</h2>
           </div>
           <div className="skills">
             <div className="progress">
-              <div className="percent" style={{ width: '70%' }}>70%</div>
+              <div className="percent" style={{ width: '70%' }}></div>
             </div>
             <h2>React js</h2>
           </div>
           <div className="skills">
             <div className="progress">
-              <div className="percent" style={{ width: '70%' }}>70%</div>
+              <div className="percent" style={{ width: '70%' }}></div>
             </div>
+            <h1>Designing Skills</h1>
             <h2>Vite</h2>
           </div>
           <div className="skills">
             <div className="progress">
-              <div className="percent" style={{ width: '70%' }}>70%</div>
+              <div className="percent" style={{ width: '70%' }}></div>
             </div>
             <h2>Figma</h2>
           </div>
           <div className="skills">
             <div className="progress">
-              <div className="percent" style={{ width: '70%' }}>70%</div>
+              <div className="percent" style={{ width: '70%' }}></div>
             </div>
             <h2>Canva</h2>
           </div>
+          <div className="progress">
+              <div className="percent" style={{ width: '90%' }}></div>
+            </div>
         </div>
         <div className="work-exp">
           <div className="container">

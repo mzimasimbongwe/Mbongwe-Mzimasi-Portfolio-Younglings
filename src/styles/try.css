@@ -1,0 +1,100 @@
+/* Define your keyframes animation */
+@keyframes load-in {
+    0% {
+      transform: translate(-50%, -50%) rotateY(-30deg);
+      opacity: 0;
+    }
+    15% {
+      transform: translate(-50%, -50%) rotateY(10deg);
+    }
+    40% {
+      transform: translate(-50%, -50%) rotateY(-15deg);
+      opacity: 1;
+    }
+    85% {
+      transform: translate(-50%, -50%) rotateY(5deg);
+    }
+    to {
+      transform: translate(-50%, -50%) rotateY(0deg);
+    }
+  }
+  
+  /* Reset some default styles */
+  * {
+    margin: 0;
+  }
+  
+  .skill-box {
+    animation: load-in 1.5s 1 forwards linear;
+    width: 80%;
+    padding: 15px;
+    background-color: #eee;
+    border-radius: 5px;
+    position: absolute;
+    max-width: 600px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  .skill-box h3 {
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .skill-box .skills {
+    margin-bottom: 20px;
+  }
+  
+  .skill-box ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .skill-box li {
+    padding: 5px;
+    margin-bottom: 10px;
+    position: relative;
+    border-radius: 5px;
+  }
+  
+  .skill-box span {
+    color: #7a7;
+  }
+  
+  .skill-box .bar {
+    position: absolute;
+    height: 4px;
+    bottom: 0;
+    left: 0;
+    border-radius: 5px;
+    display: block;
+    background: linear-gradient(to right, #b0dab9, #dad299); /* Adjust gradient colors */
+    box-shadow: 0px 1px 3px rgba(176, 218, 185, 0.2);
+  }
+  
+  .skill-box .bar b {
+    color: #b19d75;
+    font-weight: normal;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 7px;
+    font-size: 13px;
+    display: none;
+  }
+  
+  .skill-box li::after {
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: #ddd;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    margin-bottom: 2px;
+    box-shadow: 0px 0px 1px #feb, 0 1px 0 white;
+  }
+  
