@@ -1,8 +1,8 @@
-import { useState, useEffect, useRef } from 'react';
-import '../styles/About.css';
+import { useState, useEffect, useRef } from "react";
+import "../styles/About.css";
 
 const About = () => {
-  const [text, setText] = useState('');
+  const [text, setText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
   const sectionRef = useRef(null);
 
@@ -16,7 +16,7 @@ const About = () => {
     const section = sectionRef.current;
     if (section && isElementInViewport(section)) {
       // Section is visible, restart typing animation
-      setText('');
+      setText("");
       setIsTyping(true);
     }
   };
@@ -26,21 +26,22 @@ const About = () => {
     return (
       rect.top >= 0 &&
       rect.left >= 0 &&
-      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.bottom <=
+        (window.innerHeight || document.documentElement.clientHeight) &&
       rect.right <= (window.innerWidth || document.documentElement.clientWidth)
     );
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleVisibilityChange);
+    window.addEventListener("scroll", handleVisibilityChange);
     return () => {
-      window.removeEventListener('scroll', handleVisibilityChange);
+      window.removeEventListener("scroll", handleVisibilityChange);
     };
   }, []);
 
   useEffect(() => {
     let currentIndex = 0;
-    let currentText = '';
+    let currentText = "";
     let interval;
 
     if (isTyping) {
@@ -74,7 +75,10 @@ const About = () => {
           </div>
         </div>
         <div className="about__image">
-          <img src="https://i.ibb.co/nk9kwFn/about-image.png" alt="about-image" />
+          <img
+            src="https://i.ibb.co/nk9kwFn/about-image.png"
+            alt="about-image"
+          />
         </div>
       </div>
     </section>

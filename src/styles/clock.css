@@ -1,42 +1,41 @@
 #clock {
-    width: 200px; /* Adjust the width as needed */
-    height: 100px; /* Adjust the height as needed */
-    border-radius: 20px; /* Add rounded corners for a rectangular shape */
-    background-color: #3AAFA9; /* Blue background color */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(17, 17, 17, 0);
-    margin-top: 30px; /* Adjust the margin-top as needed to move it down */
+  width: 200px; /* Adjust the width as needed */
+  height: 100px; /* Adjust the height as needed */
+  border-radius: 20px; /* Add rounded corners for a rectangular shape */
+  background-color: #3aafa9; /* Blue background color */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(17, 17, 17, 0);
+  margin-top: 30px; /* Adjust the margin-top as needed to move it down */
+}
+
+#clock .time {
+  font-size: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+#clock .date {
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
+  color: #5c5959;
+  font-weight: bold; /* Add this line to make the date text bold */
+}
+
+#clock .text {
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+
+/* Media Query for Mini Mobicel Phones */
+@media screen and (max-width: 320px) {
+  #clock {
+    width: 250px; /* Adjust the width as needed for smaller screens */
+    height: 120px; /* Adjust the height as needed for smaller screens */
   }
-  
-  #clock .time {
-    font-size: 40px;
-    margin: 0;
-    padding: 0;
-  }
-  
-  #clock .date {
-    font-size: 18px;
-    margin: 0;
-    padding: 0;
-    color: #5c5959;
-    font-weight: bold; /* Add this line to make the date text bold */
-  }
-  
-  #clock .text {
-    font-size: 12px;
-    margin: 0;
-    padding: 0;
-    color: #fff;
-  }
-  
-  /* Media Query for Mini Mobicel Phones */
-  @media screen and (max-width: 320px) {
-    #clock {
-      width: 250px; /* Adjust the width as needed for smaller screens */
-      height: 120px; /* Adjust the height as needed for smaller screens */
-    }
-  }
-  
+}

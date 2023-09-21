@@ -1,15 +1,15 @@
-import  { useState, useEffect } from 'react';
-import Typed from 'typed.js';
-import { FaGithub, FaLinkedin, FaFacebook, FaInstagram } from 'react-icons/fa';
-import '../styles/Home.css';
-import Clock from '../components/clock';
+import { useState, useEffect } from "react";
+import Typed from "typed.js";
+import { FaGithub, FaLinkedin, FaFacebook, FaInstagram } from "react-icons/fa";
+import "../styles/Home.css";
+import Clock from "../components/clock";
 
 const Home = () => {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
-    const typed = new Typed('.multiple-text', {
-      strings: ['Web-developer', 'Frontend Developer', 'Backend Developer'],
+    const typed = new Typed(".multiple-text", {
+      strings: ["Web-developer", "Frontend Developer", "Backend Developer"],
       typeSpeed: 100,
       backSpeed: 100,
       backDelay: 1000,
@@ -23,9 +23,9 @@ const Home = () => {
 
   useEffect(() => {
     if (darkMode) {
-      document.body.classList.add('dark-mode');
+      document.body.classList.add("dark-mode");
     } else {
-      document.body.classList.remove('dark-mode');
+      document.body.classList.remove("dark-mode");
     }
   }, [darkMode]);
 
@@ -35,7 +35,10 @@ const Home = () => {
 
   return (
     <div>
-      <section className={`page-section home ${darkMode ? 'dark-mode' : ''}`} id="home">
+      <section
+        className={`page-section home ${darkMode ? "dark-mode" : ""}`}
+        id="home"
+      >
         <div className="home__content rain">
           <div className="home__content">
             <h2 className="home__title">Hello, I am Mzimasi Mbongwe</h2>
@@ -45,35 +48,55 @@ const Home = () => {
             </h2>
             <div className="home__description">
               <p>
-                This is my official Portfolio website to showcase my all works related to
-                web development and UI design.
+                This is my official Portfolio website to showcase my all works
+                related to web development and UI design.
               </p>
             </div>
             <br />
             <div className="home__social social-media">
-              <a href="https://github.com/mzimasimbongwe" className="social-media__link animated">
+              <a
+                href="https://github.com/mzimasimbongwe"
+                className="social-media__link animated"
+              >
                 <FaGithub className="icon" />
               </a>
-              <a href="https://www.linkedin.com/in/mzimasi-mbongwe-217933208/" className="social-media__link animated">
+              <a
+                href="https://www.linkedin.com/in/mzimasi-mbongwe-217933208/"
+                className="social-media__link animated"
+              >
                 <FaLinkedin className="icon" />
               </a>
-              <a href="https://web.facebook.com/profile.php?id=100063655705791" className="social-media__link animated">
+              <a
+                href="https://web.facebook.com/profile.php?id=100063655705791"
+                className="social-media__link animated"
+              >
                 <FaFacebook className="icon" />
               </a>
-              <a href="https://www.instagram.com/scott_vincent98/" className="social-media__link animated">
+              <a
+                href="https://www.instagram.com/scott_vincent98/"
+                className="social-media__link animated"
+              >
                 <FaInstagram className="icon" />
               </a>
             </div>
             <br />
-            <a href="https://drive.google.com/file/d/12Y07jKbPAj779tlY8-yT-3OrfufN04NX/view?usp=sharing" className="btn">Download CV</a>
+            <a
+              href="https://drive.google.com/file/d/12Y07jKbPAj779tlY8-yT-3OrfufN04NX/view?usp=sharing"
+              className="btn"
+            >
+              Download CV
+            </a>
             <Clock />
           </div>
         </div>
         <div className="home__image">
-          <img src= "https://i.ibb.co/cN83Ss0/Untitled-design-2-removebg-preview.png"    alt="home-image" />
+          <img
+            src="https://i.ibb.co/cN83Ss0/Untitled-design-2-removebg-preview.png"
+            alt="home-image"
+          />
         </div>
       </section>
-      <label className={`electric-switch ${darkMode ? 'active' : ''}`}>
+      <label className={`electric-switch ${darkMode ? "active" : ""}`}>
         <input type="checkbox" onChange={toggleDarkMode} />
         <span className="slider"></span>
       </label>

@@ -1,10 +1,10 @@
 /* --About-- */
-  
+
 .about {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--second-bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--second-bg-color);
 }
 .about__container {
   display: flex;
@@ -27,7 +27,6 @@ img {
   max-width: 100%;
   height: auto;
 }
-
 
 img {
   max-width: 100%;
@@ -62,117 +61,114 @@ img {
 
 @media (min-width: 768px) {
   .about__container {
-      flex-direction: row; /* Revert to row layout for larger screens */
-      align-items: flex-start; /* Align items to the top */
-      text-align: left; /* Align text to the left */
+    flex-direction: row; /* Revert to row layout for larger screens */
+    align-items: flex-start; /* Align items to the top */
+    text-align: left; /* Align text to the left */
   }
-  
+
   .about__content {
-      flex: 2;
-      padding: 20px;
-      text-align: left; /* Align text to the left */
+    flex: 2;
+    padding: 20px;
+    text-align: left; /* Align text to the left */
   }
 
   .about__image {
-      flex: 1;
-      max-width: none; /* Reset max-width for the image */
+    flex: 1;
+    max-width: none; /* Reset max-width for the image */
   }
 }
 
-
-
 .about__content {
-    display: flex;
-    flex-direction: column; /* Change to column to stack items vertically */
-    align-items: flex-start; /* Align items to the left */
-    padding: 0 4rem;
-    text-align: left; /* Align text within the container to the right */
+  display: flex;
+  flex-direction: column; /* Change to column to stack items vertically */
+  align-items: flex-start; /* Align items to the left */
+  padding: 0 4rem;
+  text-align: left; /* Align text within the container to the right */
 }
 
 .about__title {
-    margin: 0;
+  margin: 0;
 }
 
 .about__sub-title {
-    color: var(--main-color);
-    line-height: 1.2;
-    font-size: 2.6rem;
+  color: var(--main-color);
+  line-height: 1.2;
+  font-size: 2.6rem;
 }
 
 .about__description {
-    font-size: 1.6rem;
-    align-items: flex-start; /* Align items to the left */
-    margin: 0.5rem 0 3rem;
+  font-size: 1.6rem;
+  align-items: flex-start; /* Align items to the left */
+  margin: 0.5rem 0 3rem;
+   font-family: 'Poppins', sans-serif;
 }
 
+/* Dark mode styles */
+.dark-mode {
+  background-color: #1a1a1a;
+  color: #fff;
+}
 
-   /* Dark mode styles */
-   .dark-mode {
-    background-color: #1a1a1a;
-    color: #fff;
-  }
-  
-  /* Dark mode adjustments */
-  .dark-mode .home__content {
-    color: #fff;
-  }
-  
-  .dark-mode .home__title {
-    color: #fff;
-  }
-  
-  .dark-mode {
-    background-color: #1a1a1a;
-    color: #fff;
-  }
-  
-  /* Dark mode adjustments */
-  .dark-mode .home__content,
-  .dark-mode .home__title,
-  .dark-mode .social-media__link {
-    color: #fff;
-  }
-  
-  /* Toggle button styles */
+/* Dark mode adjustments */
+.dark-mode .home__content {
+  color: #fff;
+}
+
+.dark-mode .home__title {
+  color: #fff;
+}
+
+.dark-mode {
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+/* Dark mode adjustments */
+.dark-mode .home__content,
+.dark-mode .home__title,
+.dark-mode .social-media__link {
+  color: #fff;
+}
+
+/* Toggle button styles */
+.dark-mode-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 8px;
+  background-color: #2a2c2b;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+}
+
+.dark-mode-toggle.active .toggle-indicator {
+  background-color: #00ff00; /* Adjusted color for active state */
+}
+
+.toggle-indicator {
+  width: 30px;
+  height: 15px;
+  background-color: #ccc;
+  border-radius: 15px;
+  margin-right: 8px;
+  transition: background-color 0.3s ease;
+}
+/* Adjust the button position for smaller screens */
+@media (max-width: 768px) {
   .dark-mode-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 8px;
-    background-color: #2a2c2b;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
+    top: 80px; /* Adjust the top position for responsiveness */
+    left: 50%;
+    transform: translateX(-50%);
   }
-  
-  .dark-mode-toggle.active .toggle-indicator {
-    background-color: #00ff00; /* Adjusted color for active state */
+}
+@media (min-width: 769px) {
+  .dark-mode-toggle {
+    left: 500px; /* Adjust the right position for desktop view */
+    right: auto;
+    transform: none;
   }
-  
-  .toggle-indicator {
-    width: 30px;
-    height: 15px;
-    background-color: #ccc;
-    border-radius: 15px;
-    margin-right: 8px;
-    transition: background-color 0.3s ease;
-  }
-  /* Adjust the button position for smaller screens */
-  @media (max-width: 768px) {
-    .dark-mode-toggle {
-      top: 80px; /* Adjust the top position for responsiveness */
-      left: 50%;
-      transform: translateX(-50%);
-    }
-  }
-  @media (min-width: 769px) {
-    .dark-mode-toggle {
-      left: 500px; /* Adjust the right position for desktop view */
-      right: auto;
-      transform: none;
-    }
-  }
-  
+}

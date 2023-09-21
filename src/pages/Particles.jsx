@@ -1,6 +1,6 @@
 // ParticlesBackground.js
 
-import Particles from 'react-particles-js';
+import Particles from "react-particles-js";
 
 const ParticlesBackground = () => {
   return (
@@ -15,13 +15,13 @@ const ParticlesBackground = () => {
             },
           },
           color: {
-            value: '#2196F3', // Adjust the particle color
+            value: "#2196F3", // Adjust the particle color
           },
           shape: {
-            type: 'circle', // Adjust the shape if needed
+            type: "circle", // Adjust the shape if needed
             stroke: {
               width: 0,
-              color: '#000000',
+              color: "#000000",
             },
           },
           size: {
@@ -43,10 +43,10 @@ const ParticlesBackground = () => {
           move: {
             enable: true,
             speed: 1, // Adjust particle movement speed
-            direction: 'none',
+            direction: "none",
             random: true,
             straight: false,
-            out_mode: 'out',
+            out_mode: "out",
             bounce: false,
             attract: {
               enable: false,
@@ -56,11 +56,11 @@ const ParticlesBackground = () => {
           },
         },
         interactivity: {
-          detect_on: 'window',
+          detect_on: "window",
           events: {
             onhover: {
               enable: true,
-              mode: 'repulse', // Adjust interaction mode on hover
+              mode: "repulse", // Adjust interaction mode on hover
             },
           },
           modes: {
