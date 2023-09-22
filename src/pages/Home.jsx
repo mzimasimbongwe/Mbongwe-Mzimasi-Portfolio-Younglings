@@ -57,24 +57,28 @@ const Home = () => {
               <a
                 href="https://github.com/mzimasimbongwe"
                 className="social-media__link animated"
+                target="_blank" rel="noreferrer"
               >
                 <FaGithub className="icon" />
               </a>
               <a
                 href="https://www.linkedin.com/in/mzimasi-mbongwe-217933208/"
                 className="social-media__link animated"
+                target="_blank" rel="noreferrer"
               >
                 <FaLinkedin className="icon" />
               </a>
               <a
                 href="https://web.facebook.com/profile.php?id=100063655705791"
                 className="social-media__link animated"
+                target="_blank" rel="noreferrer"
               >
                 <FaFacebook className="icon" />
               </a>
               <a
                 href="https://www.instagram.com/scott_vincent98/"
                 className="social-media__link animated"
+                target="_blank" rel="noreferrer"
               >
                 <FaInstagram className="icon" />
               </a>
@@ -83,6 +87,7 @@ const Home = () => {
             <a
               href="https://drive.google.com/file/d/12Y07jKbPAj779tlY8-yT-3OrfufN04NX/view?usp=sharing"
               className="btn"
+              target="_blank" rel="noreferrer"
             >
               Download CV
             </a>
@@ -93,6 +98,7 @@ const Home = () => {
           <img
             src="https://i.ibb.co/cN83Ss0/Untitled-design-2-removebg-preview.png"
             alt="home-image"
+            target="_blank" rel="noreferrer"
           />
         </div>
       </section>

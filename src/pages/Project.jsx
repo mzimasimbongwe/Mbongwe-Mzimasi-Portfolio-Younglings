@@ -11,6 +11,7 @@ const PortfolioSection = () => {
             <img
               src="https://i.ibb.co/5kDbhz4/Mzamomtsha-Primary-School.png"
               alt="portfolio-image-01"
+              target="_blank" rel="noreferrer"
             />
           </div>
           <div className="portfolio__layer">
@@ -22,6 +23,7 @@ const PortfolioSection = () => {
             <a
               href="https://github.com/mzimasimbongwe/Mzamomtsha-Primary-School-Final-Website"
               className="portfolio__link"
+              target="_blank" rel="noreferrer"
             >
               <i className="bx bx-link-external"></i>
             </a>
@@ -32,6 +34,7 @@ const PortfolioSection = () => {
             <img
               src="https://i.ibb.co/b1vhxhg/Tax.png"
               alt="portfolio-image-02"
+              target="_blank" rel="noreferrer"
             />
           </div>
           <div className="portfolio__layer">
@@ -43,6 +46,8 @@ const PortfolioSection = () => {
             <a
               href="https://github.com/mzimasimbongwe?tab=repositories"
               className="portfolio__link"
+              target="_blank" rel="noreferrer"
+              
             >
               <i className="bx bx-link-external"></i>
             </a>
@@ -54,6 +59,7 @@ const PortfolioSection = () => {
             <img
               src="https://i.ibb.co/8Dfmnx2/Financial.png"
               alt="portfolio-image-03"
+              target="_blank" rel="noreferrer"
             />
           </div>
           <div className="portfolio__layer">
@@ -66,6 +72,7 @@ const PortfolioSection = () => {
             <a
               href="https://github.com/mzimasimbongwe/Mzamomtsha-Primary-School-Final-Website"
               className="portfolio__link"
+              target="_blank" rel="noreferrer"
             >
               <i className="bx bx-link-external"></i>
             </a>
@@ -76,6 +83,7 @@ const PortfolioSection = () => {
             <img
               src="https://i.ibb.co/xMWrpvQ/first-site.png"
               alt="portfolio-image-04"
+              target="_blank" rel="noreferrer"
             />
           </div>
           <div className="portfolio__layer">
@@ -86,6 +94,7 @@ const PortfolioSection = () => {
             <a
               href="https://mzimasi-portifolio.netlify.app/"
               className="portfolio__link"
+              target="_blank" rel="noreferrer"
             >
               <i className="bx bx-link-external"></i>
             </a>
@@ -96,6 +105,7 @@ const PortfolioSection = () => {
             <img
               src="https://i.ibb.co/5GmTsDm/chat-1.png"
               alt="portfolio-image-05"
+              target="_blank" rel="noreferrer"
             />
           </div>
           <div className="portfolio__layer">
@@ -107,6 +117,7 @@ const PortfolioSection = () => {
             <a
               href="https://github.com/mzimasimbongwe?tab=repositories"
               className="portfolio__link"
+              target="_blank" rel="noreferrer"
             >
               <i className="bx bx-link-external"></i>
             </a>
@@ -117,6 +128,7 @@ const PortfolioSection = () => {
             <img
               src="https://i.ibb.co/7XcFnzG/Banking-1.png"
               alt="portfolio-image-06"
+              target="_blank" rel="noreferrer"
             />
           </div>
           <div className="portfolio__layer">
@@ -133,6 +145,7 @@ const PortfolioSection = () => {
             <a
               href="https://github.com/mzimasimbongwe/Banking-App"
               className="portfolio__link"
+              target="_blank" rel="noreferrer"
             >
               <i className="bx bx-link-external"></i>
             </a>

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import  { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { collection, addDoc } from 'firebase/firestore/lite';
 import { initializeApp } from 'firebase/app';
